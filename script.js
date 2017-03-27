@@ -43,8 +43,8 @@ app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', 
         $scope.playlistVideosTemp=localStorage.getItem('playlistData');
         if($scope.playlistVideosTemp)
         {
-            alert("not null")
-            
+          //  alert("not null")
+
             $scope.playlistVideos=JSON.parse($scope.playlistVideosTemp);
             console.log($scope.playlistVideos);
         }
