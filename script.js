@@ -123,116 +123,92 @@ app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', 
 			$scope.playVideo($scope.playlistVideos[previousIndex]);
 		};
 		
-		$scope.togglePlayerState = function() {
-            console.log("inside toggle");
-            var video1=this.player.player;
-            var playerState = this.player.player.getPlayerState();
-            console.log(playerState);
-            
-            //alert(duration);
-          //  alert($scope.duration);
-            console.log(this.player.player);
-            console.log(playerState);
-
-             
+	$scope.togglePlayerState = function() {
+      var video1=this.player.player;
+      var playerState = this.player.player.getPlayerState();
+     /*   console.log(playerState);
+        console.log(this.player.player);
+        console.log(playerState);
+    */
+         
             if(playerState ===5)
             {
-//scope.playlistVideos[$scope.currentVideoIndex].starTime=0;
-            $scope.seekToTime=$scope.playlistVideos[$scope.currentVideoIndex].starTime;
-           // alert($scope.seekToTime);
-            this.player.player.seekTo($scope.seekToTime);
+
+                     $scope.seekToTime=$scope.playlistVideos[$scope.currentVideoIndex].starTime;
+                     this.player.player.seekTo($scope.seekToTime);
             }
-            playerState == 1 ? this.player.player.pauseVideo() : this.player.player.playVideo();
-           // playlistVideos
-          //  alert();
-           
-            
-            var Timer=setInterval(function(){ 
+       playerState == 1 ? this.player.player.pauseVideo() : this.player.player.playVideo();
+          var Timer=setInterval(function(){ 
                 var currtime= video1.getCurrentTime();
                 var duration=video1.getDuration()-4;
                 console.log(currtime);
                 console.log("duration");
                 console.log(duration);
-                if(duration <= currtime )
-                {
-                 $scope.nextVideo();
-                 clearInterval(myTimer);
-                 if(nextIndex == 0)
-                  {
-                    alert("finished playing playlist...Press ok to replay the playlist");
-                  }
-              //  alert("Hello"); 
-                }
-             }, 3000);
-            var url = "https://www.googleapis.com/youtube/v3/videos?id="+$scope.playlistVideos[$scope.currentVideoIndex].videoId+"&part=statistics&key=AIzaSyBkLQiJRCGWlMsroWR6ccJ3TAlvioWpOZY";
+                    if(duration <= currtime )
+                    {
+                        $scope.nextVideo();
+                        clearInterval(myTimer);
+                            if(nextIndex == 0)
+                            {
+                                alert("finished playing playlist...Press ok to replay the playlist");
+                            }
+              // 
+                    }
+          }, 3000);
+       var url = "https://www.googleapis.com/youtube/v3/videos?id="+$scope.playlistVideos[$scope.currentVideoIndex].videoId+"&part=statistics&key=AIzaSyBkLQiJRCGWlMsroWR6ccJ3TAlvioWpOZY";
 
             $http.get(url).success(function (json) {
-                $scope.views = json;
-                console.log("views are");
-                $scope.Totalcount=$scope.views.items[0].statistics.viewCount;
+                   $scope.views = json;
+                  console.log("views are");
+                      $scope.Totalcount=$scope.views.items[0].statistics.viewCount;
              }).error(function (error) {
-                console.log(JSON.stringify(error));
+                    console.log(JSON.stringify(error));
             });
 			
 		};
 
     $scope.playVideo = function(video) {
             //    alert("calling");
-				this.currentVideo = video;
-                var video1=this.player.player;
-				this.currentVideoIndex = this.playlistVideos.indexOf(video);
-                $scope.seekToTime=$scope.playlistVideos[this.currentVideoIndex].starTime;
-                console.log($scope.playlistVideos[$scope.currentVideoIndex]);
-                $scope.seekToendTime=$scope.playlistVideos[this.currentVideoIndex].endTime;
-                console.log($scope.seekToTime);
+		this.currentVideo = video;
+        var video1=this.player.player;
+		this.currentVideoIndex = this.playlistVideos.indexOf(video);
+        $scope.seekToTime=$scope.playlistVideos[this.currentVideoIndex].starTime;
+        console.log($scope.playlistVideos[$scope.currentVideoIndex]);
+        $scope.seekToendTime=$scope.playlistVideos[this.currentVideoIndex].endTime;
+        console.log($scope.seekToTime);
             //    alert($scope.seekToendTime);
-                var myTimer=setInterval(function(){ 
+            var myTimer=setInterval(function(){ 
                 var currtime= video1.getCurrentTime();
                 var duration=video1.getDuration()-4;
                 console.log(currtime);
                 console.log("duration");
                 console.log(duration);
-                if(duration <= currtime || currtime >= $scope.seekToendTime)
-                {
-                 //   alert("inside");
-                 $scope.nextVideo();
-                 clearInterval(myTimer);
-              //   alert(nextIndex);
-                 if(nextIndex == 0)
-                  { 
-                    alert("finished playing playlist...Press ok to replay the playlist");
-                  }
-              //  alert("Hello"); 
-                }
+                    if(duration <= currtime || currtime >= $scope.seekToendTime)
+                    {
+                                 $scope.nextVideo();
+                                 clearInterval(myTimer);
+             
+                         if(nextIndex == 0)
+                        { 
+                            alert("finished playing playlist...Press ok to replay the playlist");
+                        }
+                    }
              }, 3000);
-            //      alert($scope.seekToTime);
-              //  this.player.player.seekTo($scope.seekToTime);
-				this.player.player.loadVideoById(video.videoId,$scope.seekToTime);
-                console.log(this.player.player);
-               // var playerState = this.player.player.getPlayerState();
-               //         alert(playerState);
-                       // console.log(this.player.player);
-                       // console.log(playerState);
-              
-           // var deferred = $q.defer();
-            var url = "https://www.googleapis.com/youtube/v3/videos?id="+video.videoId+"&part=statistics&key=AIzaSyBkLQiJRCGWlMsroWR6ccJ3TAlvioWpOZY";
-
-            $http.get(url).success(function (json) {
-                $scope.views = json;
-                console.log("views are");
-                $scope.Totalcount=$scope.views.items[0].statistics.viewCount;
-             }).error(function (error) {
-                console.log(JSON.stringify(error));
-            });
+    	 this.player.player.loadVideoById(video.videoId,$scope.seekToTime);
+         console.log(this.player.player);
+         var url = "https://www.googleapis.com/youtube/v3/videos?id="+video.videoId+"&part=statistics&key=AIzaSyBkLQiJRCGWlMsroWR6ccJ3TAlvioWpOZY";            
+                $http.get(url).success(function (json) {
+                        $scope.views = json;
+                        console.log("views are");
+                        $scope.Totalcount=$scope.views.items[0].statistics.viewCount;
+                }).error(function (error) {
+                        console.log(JSON.stringify(error));
+                });
            
-    
+  
     };
              
                   
-              
-
-    
-    //this.player.player.getCurrentTime();
-    
+ 
 
 }]);
