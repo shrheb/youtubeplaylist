@@ -114,8 +114,10 @@ body {
 	margin-bottom: 3px;
 }
 p {
-    margin: 0 0 10px;
+   
     font-family: cursive;
     font-size: 14px;
     font-style: initial;
+    margin-left: 40px !important;
+    margin-bottom: 15px !important;
 }
