@@ -9,7 +9,7 @@
     <script src="script.js"></script>
     <script src="youtubeplayer.js"></script>
     <script src="filters.js"></script>
-   
+
   </head>
 
   <body ng-app="myApp" >
@@ -23,7 +23,9 @@
 			<div class="col-lg-6">
 					<h4 class="youtube-header"></h4>
 		     		 <div id="ytplayer" youtube-player></div>
+		     		 <h4 style="text-align:right;margin-right:55px;font-weight:bold;"><span style="font-size:17px;">Total Views:</span>{{Totalcount}}</h4>
 		     			 <p>please dont use inline controls.Use below controls.Dint get time to handle that scnario</p>
+		     		 
 		     	 </div>
 		     	 </br>
 				<div class="col-lg-6 playlist-videos-container">

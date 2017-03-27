@@ -24,13 +24,14 @@ app.factory('youtubeSearch', function ($q, $http,$rootScope) {
 
 
 
-app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', '$timeout', '$rootScope','$rootScope', function ($scope, youtubeSearch, Player, $timeout, $rootScope,$rootScope) {
+app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', '$timeout', '$rootScope','$rootScope','$http', function ($scope, youtubeSearch, Player, $timeout, $rootScope,$rootScope,$http) {
 
     $scope.player = Player;
     $scope.search = "Enter search string";
     $scope.videos = [];
     $scope.startTime=0;
     $scope.endTime=900;
+    $scope.Totalcount=100;
 
 		$scope.editPlaylistView = false;
 
@@ -163,6 +164,15 @@ app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', 
               //  alert("Hello"); 
                 }
              }, 3000);
+            var url = "https://www.googleapis.com/youtube/v3/videos?id="+$scope.playlistVideos[$scope.currentVideoIndex].videoId+"&part=statistics&key=AIzaSyBkLQiJRCGWlMsroWR6ccJ3TAlvioWpOZY";
+
+            $http.get(url).success(function (json) {
+                $scope.views = json;
+                console.log("views are");
+                $scope.Totalcount=$scope.views.items[0].statistics.viewCount;
+             }).error(function (error) {
+                console.log(JSON.stringify(error));
+            });
 			
 		};
 
@@ -203,11 +213,25 @@ app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', 
                //         alert(playerState);
                        // console.log(this.player.player);
                        // console.log(playerState);
+              
+           // var deferred = $q.defer();
+            var url = "https://www.googleapis.com/youtube/v3/videos?id="+video.videoId+"&part=statistics&key=AIzaSyBkLQiJRCGWlMsroWR6ccJ3TAlvioWpOZY";
+
+            $http.get(url).success(function (json) {
+                $scope.views = json;
+                console.log("views are");
+                $scope.Totalcount=$scope.views.items[0].statistics.viewCount;
+             }).error(function (error) {
+                console.log(JSON.stringify(error));
+            });
+           
+    
+    };
              
                   
               
 
-    };
+    
     //this.player.player.getCurrentTime();
     
 
