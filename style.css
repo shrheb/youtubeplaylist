@@ -1,0 +1,109 @@
+body {
+	background: #ecf0f1;
+}
+
+.playlist-videos-container {
+  padding-top: 4px;
+}
+
+.youtube-header {
+    color: #3498db;
+    margin-left: 60px;
+    font-weight: 700;
+    font-style: italic;
+}
+#ytplayer {
+    margin-left: 20px;
+}
+
+.search-result-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    float: left;
+    border: 2px solid #161f42;
+}
+.youtube-input {
+    width: 300px;
+    margin-left: 38px;
+    margin-bottom: 5px;
+}
+.player-btns {
+  margin-left: 38px;
+  margin-bottom: 4px;
+  
+}
+.search-result-meta {
+    font-size: 10px;
+    position: absolute;
+    top: 28px;
+    left: 60px;
+    font-style: italic;
+    color: #2c3e50;
+}
+.search-result-video {
+    background: #bdc3c7;
+    background: #EA9E97;
+    border-radius: 7px;
+    box-shadow: 0 1px 1px 0 #161F42;
+    height: 44px;
+    padding: 2px;
+    margin-bottom: 3px;
+    margin-left: 22px;
+    width: 340px;
+    position: relative;
+}
+.search-result-video:hover {
+    cursor: pointer;
+    background-color: #E98378;
+    box-shadow: 0 1px 1px 0 #41525f;
+}
+
+.playlist-video {
+	background: #2c3e50;
+    border-radius: 7px;
+    box-shadow: 0 1px 1px 0 #161F42;
+    height: 44px;
+    padding: 2px;
+    margin-bottom: 3px;
+    margin-left: 22px;
+    width: 340px;
+    position: relative;
+}
+.playlist-video:hover {
+	cursor:pointer;
+	background: #5B6E7B;
+}
+.playlist-video-title {
+		color: #bdc3c7;
+		float: left;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 12px;
+    font-weight: 700;
+}
+.search-result-title {
+    float: left;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 12px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+.playlist-video-delete {
+	font-size: 18px;
+	color: #bdc3c7;
+	float: right;
+	margin-right: 12px;
+  margin-top: 8px;
+}
+.search-result-add {
+    font-size: 18px;
+    float: right;
+    margin-right: 12px;
+    margin-top: 8px;
+}
+.playlist-btn {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
