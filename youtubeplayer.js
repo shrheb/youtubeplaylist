@@ -13,8 +13,8 @@ angular.module('youtube', ['ng']).run(function () {})
     service.playerId = "ytplayer";
     service.player = null;
     service.videoId = "zjYxNnzNhRs";
-    service.playerHeight = '200';
-    service.playerWidth = '356';
+    service.playerHeight = '400';
+    service.playerWidth = '700';
 
     service.bindVideoPlayer = function (elementId) {
         service.playerId = elementId;

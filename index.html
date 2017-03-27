@@ -12,43 +12,53 @@
   </head>
 
   <body ng-app="myApp" >
-  
+    </br></br>
     <div class="col-lg-12">
       
     <div ng-controller="YoutubeSearchController">
 											
 			<div class="row">
-				<div class="col-lg-12 playlist-videos-container">
-		        <div ng-repeat="video in playlistVideos">
-		          <div class="playlist-video" ng-click="removeVideo($index)" ng-show="editPlaylistView">
-		            <img class="search-result-img" ng-src="{{video.thumbnail}}"/>
-		            <div class="playlist-video-title">{{video.title | truncate:35:"..." }}</div>
-		            <div class="playlist-video-delete"><span class="glyphicon glyphicon-trash"></span></div>
-		          </div>
-		          <div class="playlist-video" ng-click="playVideo(video)" ng-hide="editPlaylistView">
-		            <img class="search-result-img" ng-src="{{video.thumbnail}}"/>
-		            <div class="playlist-video-title">{{video.title | truncate:35:"..." }}</div>
-		            <div class="playlist-video-delete"><span class="glyphicon glyphicon-play"></span></div>
-		          </div>
-		        </div>
-				</div>
-			</div>
-			
-			<div class="row">
-				
-				<div class="col-lg-12">
+			</br>
+			<div class="col-lg-6">
 					<h4 class="youtube-header"></h4>
-		      <div id="ytplayer" youtube-player></div>
-		      <p>please dont use inline controls.Use below controls.Dint get time to handle that scnario</p>
-		      <div class="row">
+		     		 <div id="ytplayer" youtube-player></div>
+		     			 <p>please dont use inline controls.Use below controls.Dint get time to handle that scnario</p>
+		     	 </div>
+		     	 </br>
+				<div class="col-lg-6 playlist-videos-container">
+		      	  <div ng-repeat="video in playlistVideos">
+		         	 <div class="playlist-video" ng-click="removeVideo($index)" ng-show="editPlaylistView">
+		           		 <img class="search-result-img" ng-src="{{video.thumbnail}}"/>
+		           		 <div class="playlist-video-title">{{video.title | truncate:35:"..." }}
+		           		 </div>
+		            	 <div class="playlist-video-delete"><span class="glyphicon glyphicon-trash"></span></div>
+		          		</div>
+		         		 <div class="playlist-video" ng-click="playVideo(video)" ng-hide="editPlaylistView">
+		           			 <img class="search-result-img" ng-src="{{video.thumbnail}}"/>
+		            		<div class="playlist-video-title">{{video.title | truncate:35:"..." }}</div>
+		           		   <div class="playlist-video-delete"><span class="glyphicon glyphicon-play"></span></div>
+		                </div>
+
+		      		 </div>
+		      		 <button style="margin-left:9vw;" class="btn btn-primary playlist-btn" ng-click="togglePlaylistView()" ng-hide="editPlaylistView">Edit playlist</button>
+		      		 <button style="margin-left:9vw;" class="btn btn-success playlist-btn" ng-click="togglePlaylistView()" ng-show="editPlaylistView">Play</br>Mode</button>
+				  </div>
+				
+		     	 <div  class="row">
+		     	 </br>
 		          <div class="col-lg-4 player-btns">
-                <button class="btn btn-success playlist-btn" ng-click="togglePlaylistView()" ng-show="editPlaylistView">Playlist Play </br>Mode</button>
-							  <button class="btn btn-primary playlist-btn" ng-click="togglePlaylistView()" ng-hide="editPlaylistView">Edit playlist</button>
+                
+							  
 		            <button class="btn btn-primary" ng-click="previousVideo()"><next><span class="glyphicon glyphicon-step-backward"></span></button>
 						  	<button class="btn btn-primary" ng-click="togglePlayerState()"><span class="glyphicon glyphicon-play"></span><span class="glyphicon glyphicon-pause"></span></button>
 							  <button class="btn btn-primary" ng-click="nextVideo()"><span class="glyphicon glyphicon-step-forward"></span></button>
 						<!--	  <button class="btn btn-primary" ng-click="toggleSearchView()">toggle search</button>-->
 		          </div>
+		    </div>
+			
+			<div  class="row">
+				
+			
 		      </div>
 		      </br>
 		      <div ng-show="searchView">
@@ -61,8 +71,8 @@
 		        <p style="margin-left:4vw;">Enter End time of video</p>
 		        <input type="text" placeholder="Enter End Time" name="endTime" ng-model="endTime" class="youtube-input" />
                 </br>
-		        <h4 style="margin-left:4vw;">Once you fill the details click on the add symbol which on top of below search results</h4>
-			        <div style="margin-left:4vw;" class="youtube-results-container">
+		        <h4 style="margin-left:4vw;">Once you fill the details click on the add symbol which is on right side</h4>
+			        <div style="margin-left:50vw;margin-top:-29vh;" class="youtube-results-container">
 			          <div ng-repeat="video in videos" class="video-search-result-container">
 			            <div class="search-result-video" ng-click="addVideo(video)">
 			              <img class="search-result-img" ng-src="{{video.thumbnail}}" />

@@ -43,7 +43,7 @@ app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', 
         $scope.playlistVideosTemp=localStorage.getItem('playlistData');
         if($scope.playlistVideosTemp)
         {
-          //  alert("not null")
+       //     alert("not null")
 
             $scope.playlistVideos=JSON.parse($scope.playlistVideosTemp);
             console.log($scope.playlistVideos);
@@ -176,7 +176,7 @@ app.controller('YoutubeSearchController', ['$scope', 'youtubeSearch', 'Player', 
                 $scope.seekToendTime=$scope.playlistVideos[this.currentVideoIndex].endTime;
                 console.log($scope.seekToTime);
             //    alert($scope.seekToendTime);
-               var myTimer=setInterval(function(){ 
+                var myTimer=setInterval(function(){ 
                 var currtime= video1.getCurrentTime();
                 var duration=video1.getDuration()-4;
                 console.log(currtime);
