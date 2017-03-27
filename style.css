@@ -113,3 +113,9 @@ body {
 	margin-top: 3px;
 	margin-bottom: 3px;
 }
+p {
+    margin: 0 0 10px;
+    font-family: cursive;
+    font-size: 14px;
+    font-style: initial;
+}
